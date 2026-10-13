@@ -3,6 +3,7 @@
 > 本项目灵感来源 猜盐：野鸡大学辨别 —— 找出正规大学！ https://xiaoce.fun/q/79778
 
 看到了，搜了一下，好玩，但是只有一页，没玩够，遂让夜间不要钱的ai帮我做了一个。
+
 游戏直达：[https://rhhhhhhh.github.io/Fake-CN-University-Game](https://rhhhhhhh.github.io/Fake-CN-University-Game/)
 
 从 30 所学校中找出 15 所正规大学，别被野鸡大学骗了。

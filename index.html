@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="野鸡大学辨别小游戏：从 30 所学校中找出 15 所正规大学">
+<meta name="referrer" content="no-referrer">
+<!-- GitHub Pages 无法自定义响应头，用 meta 下发 CSP（注：frame-ancestors 在 meta 中不支持） -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; media-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>野鸡大学辨别——找出正规大学！</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app" class="app">
+
+  <!-- 首页：难度选择 -->
+  <section id="screen-home" class="screen">
+    <header class="hero">
+      <h1 class="hero-title">野鸡大学辨别<span class="hero-accent">——找出正规大学！</span></h1>
+      <p class="hero-sub">从 30 所学校中挑出 15 所正规大学，别被“野鸡大学”骗了</p>
+    </header>
+
+    <div class="levels">
+      <button type="button" class="level-card" data-level="easy">
+        <span class="level-tag level-easy">简单</span>
+        <span class="level-desc">知名公办大学 VS 名字浮夸的野鸡大学（如“中国XX大学”）</span>
+      </button>
+      <button type="button" class="level-card" data-level="medium">
+        <span class="level-tag level-medium">中等</span>
+        <span class="level-desc">正规“学院”与各类公办大学 VS 名字正常、只差“学院/大学”后缀的野鸡大学</span>
+      </button>
+      <button type="button" class="level-card" data-level="hard">
+        <span class="level-tag level-hard">困难</span>
+        <span class="level-desc">公办与民办院校混合 VS 高度仿冒、极易混淆的野鸡大学</span>
+      </button>
+      <button type="button" class="level-card" data-level="hell">
+        <span class="level-tag level-hell">地狱</span>
+        <span class="level-desc">以地方院校为主，仅夹带 2~4 所大学 VS 高度仿冒、极易混淆的野鸡大学</span>
+      </button>
+    </div>
+
+    <p class="rules">每局 30 所学校（15 正规 + 15 野鸡） · 限时 5 分钟 · 允许错 5 次</p>
+    <p class="source">正规高校来自教育部《全国普通高等学校名单》，野鸡大学来自人民日报曝光的 392 所虚假大学名单</p>
+  </section>
+
+  <!-- 游戏页 -->
+  <section id="screen-game" class="screen hidden">
+    <header class="hero hero-compact">
+      <h1 class="hero-title">野鸡大学辨别<span class="hero-accent">——找出正规大学！</span></h1>
+      <p class="hero-sub" id="levelHint">点击你认为的正规大学</p>
+    </header>
+
+    <div class="hud" role="status" aria-live="polite">
+      <div class="hud-item"><span class="hud-label">倒计时</span><span class="hud-value" id="hudTime">5:00</span></div>
+      <div class="hud-item"><span class="hud-label">已找到</span><span class="hud-value hud-ok" id="hudFound">0</span></div>
+      <div class="hud-item"><span class="hud-label">剩余</span><span class="hud-value" id="hudLeft">15</span></div>
+      <div class="hud-item"><span class="hud-label">总需</span><span class="hud-value">15</span></div>
+      <div class="hud-item"><span class="hud-label">可错</span><span class="hud-value hud-bad" id="hudLives">5</span></div>
+    </div>
+
+    <div id="grid" class="grid" role="list" aria-label="学校列表"></div>
+
+    <div id="result" class="result hidden" role="status" aria-live="polite">
+      <p class="result-title" id="resultTitle"></p>
+      <p class="result-detail" id="resultDetail"></p>
+    </div>
+
+    <div class="legend hidden" id="legend">
+      <span class="legend-item"><i class="dot dot-ok"></i>正规大学</span>
+      <span class="legend-item"><i class="dot dot-bad"></i>野鸡大学</span>
+      <span class="legend-item"><i class="dot dot-miss"></i>漏选的正规大学</span>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn btn-primary" id="btnRestart">再玩一局</button>
+      <button type="button" class="btn btn-ghost" id="btnBack">换个难度</button>
+    </div>
+  </section>
+
+</main>
+<script src="data.js" defer></script>
+<script src="game.js" defer></script>
+</body>
+</html>

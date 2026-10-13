@@ -99,16 +99,23 @@ html, body {
 .source { text-align: center; font-size: 12px; color: #9aa3b2; margin: 0; }
 
 /* ---------- HUD ---------- */
+/* 固定在顶部：卡片较多需要滚动时，倒计时与计数始终可见 */
 .hud {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 18px;
+  padding: 10px 0 12px;
+  margin-bottom: 8px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
 }
 .hud-item {
   min-width: 84px;
-  padding: 8px 14px;
+  padding: 6px 14px;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -218,10 +225,24 @@ html, body {
 .btn-ghost { background: var(--card); color: var(--primary); border-color: #c7d7f5; }
 .btn-ghost:hover { background: #eef4ff; }
 
-@media (max-width: 480px) {
-  .app { padding: 20px 12px 44px; }
-  .grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
-  .tile { min-height: 56px; font-size: 13px; }
+@media (max-width: 560px) {
+  .app { padding: 16px 10px 40px; }
+  /* 手机上每行固定 3 个学校卡片 */
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+  }
+  .tile {
+    min-height: 64px;
+    padding: 8px 5px;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+  .tile-note { font-size: 10px; }
+  .hud { gap: 6px; padding: 8px 0 10px; }
+  .hud-item { min-width: 68px; padding: 5px 8px; }
+  .hud-value { font-size: 17px; }
+  .hero-compact { margin-bottom: 12px; }
 }
 
 </style>
@@ -270,7 +291,6 @@ html, body {
       <div class="hud-item"><span class="hud-label">倒计时</span><span class="hud-value" id="hudTime">5:00</span></div>
       <div class="hud-item"><span class="hud-label">已找到</span><span class="hud-value hud-ok" id="hudFound">0</span></div>
       <div class="hud-item"><span class="hud-label">剩余</span><span class="hud-value" id="hudLeft">15</span></div>
-      <div class="hud-item"><span class="hud-label">总需</span><span class="hud-value">15</span></div>
       <div class="hud-item"><span class="hud-label">可错</span><span class="hud-value hud-bad" id="hudLives">5</span></div>
     </div>
 
